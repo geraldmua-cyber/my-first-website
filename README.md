@@ -138,7 +138,7 @@
             Thanks for visiting my website.
         </p>
 
-        <a class="button" href="mailto:your-email@example.com">
+        <a class="button" href="mailto:your-geraldmua@gmail.com">
             Send Me an Email
         </a>
     </div>
