@@ -3,20 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerald | Personal Website</title>
+    <title>Gerald | Portfolio</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            color: #222;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
         }
 
         header {
-            background: #1f2937;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.95);
             color: white;
-            padding: 20px 40px;
+            padding: 18px 8%;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
         }
 
         nav {
@@ -25,57 +34,192 @@
             align-items: center;
         }
 
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
         nav a {
             color: white;
             text-decoration: none;
             margin-left: 20px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #60a5fa;
         }
 
         .hero {
+            min-height: 88vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            padding: 80px 20px;
+            padding: 60px 20px;
+            color: white;
+            background: linear-gradient(
+                135deg,
+                #0f172a,
+                #1d4ed8,
+                #2563eb
+            );
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .profile-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
             background: white;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1d4ed8;
+            font-size: 50px;
+            font-weight: bold;
+            border: 5px solid rgba(255,255,255,0.5);
         }
 
         .hero h1 {
-            font-size: 42px;
-            margin-bottom: 10px;
+            font-size: 52px;
+            margin: 0 0 15px;
+        }
+
+        .hero h2 {
+            font-size: 24px;
+            font-weight: normal;
+            margin-bottom: 20px;
         }
 
         .hero p {
             font-size: 18px;
-            color: #555;
+            line-height: 1.7;
+            max-width: 700px;
+            margin: auto;
         }
 
-        .button {
+        .hero-buttons {
+            margin-top: 30px;
+        }
+
+        .btn {
             display: inline-block;
-            margin-top: 20px;
-            padding: 12px 22px;
-            background: #2563eb;
-            color: white;
+            padding: 13px 24px;
+            margin: 8px;
+            border-radius: 8px;
             text-decoration: none;
-            border-radius: 6px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #1d4ed8;
+        }
+
+        .btn-secondary {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.2);
         }
 
         section {
-            max-width: 900px;
+            max-width: 1100px;
             margin: auto;
-            padding: 50px 20px;
+            padding: 70px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 34px;
+            margin-bottom: 40px;
         }
 
         .card {
             background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 22px;
+        }
+
+        .skill-card,
+        .project-card {
+            background: white;
             padding: 25px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-radius: 14px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+            transition: 0.3s;
+        }
+
+        .skill-card:hover,
+        .project-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .skill-card h3,
+        .project-card h3 {
+            margin-top: 0;
+            color: #1d4ed8;
+        }
+
+        .about-text {
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        .contact {
+            text-align: center;
+        }
+
+        .contact p {
+            font-size: 17px;
         }
 
         footer {
-            text-align: center;
-            padding: 25px;
-            background: #1f2937;
+            background: #0f172a;
             color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        @media (max-width: 700px) {
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav a {
+                margin: 0 8px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero h2 {
+                font-size: 20px;
+            }
+
+            .profile-circle {
+                width: 120px;
+                height: 120px;
+                font-size: 40px;
+            }
         }
     </style>
 </head>
@@ -84,68 +228,166 @@
 
 <header>
     <nav>
-        <strong>Gerald</strong>
+        <div class="logo">Gerald</div>
 
         <div>
             <a href="#about">About</a>
-            <a href="#interests">Interests</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
 </header>
 
-<div class="hero">
-    <h1>Hello, I'm Gerald</h1>
+<section class="hero">
+    <div class="hero-content">
 
-    <p>
-        Welcome to my personal website.
-        I am learning technology, web development, and GitHub.
-    </p>
+        <div class="profile-circle">
+            G
+        </div>
 
-    <a class="button" href="#about">Learn More</a>
-</div>
+        <h1>Hello, I'm Gerald</h1>
 
-<section id="about">
-    <div class="card">
-        <h2>About Me</h2>
+        <h2>
+            Technology Learner • Creator • Problem Solver
+        </h2>
 
         <p>
-            I enjoy learning new things, exploring technology,
-            creating content, and developing ideas that can help people.
+            Welcome to my digital space. I am exploring technology,
+            web development, artificial intelligence, content creation,
+            and innovative ideas that can make a positive impact.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary">
+                View My Projects
+            </a>
+
+            <a href="#contact" class="btn btn-secondary">
+                Contact Me
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<section id="about">
+    <h2 class="section-title">About Me</h2>
+
+    <div class="card">
+        <p class="about-text">
+            I am passionate about learning, building ideas, and using
+            technology to solve real-world problems. I am currently
+            developing my skills in web development, GitHub, artificial
+            intelligence, and digital content creation.
+        </p>
+
+        <p class="about-text">
+            This website is part of my journey into technology and
+            represents one of my first projects built and published
+            using GitHub.
         </p>
     </div>
 </section>
 
-<section id="interests">
-    <div class="card">
-        <h2>My Interests</h2>
+<section id="skills">
+    <h2 class="section-title">My Interests & Skills</h2>
 
-        <ul>
-            <li>Technology</li>
-            <li>Web Development</li>
-            <li>Content Creation</li>
-            <li>Personal Development</li>
-            <li>Artificial Intelligence</li>
-        </ul>
+    <div class="grid">
+
+        <div class="skill-card">
+            <h3>💻 Web Development</h3>
+            <p>
+                Learning HTML, CSS, GitHub, and how websites are built.
+            </p>
+        </div>
+
+        <div class="skill-card">
+            <h3>🤖 Artificial Intelligence</h3>
+            <p>
+                Exploring AI tools and how they can support productivity,
+                creativity, and business ideas.
+            </p>
+        </div>
+
+        <div class="skill-card">
+            <h3>🎥 Content Creation</h3>
+            <p>
+                Interested in storytelling, digital media, video,
+                podcasts, and online communication.
+            </p>
+        </div>
+
+        <div class="skill-card">
+            <h3>🚀 Innovation</h3>
+            <p>
+                Developing ideas that combine technology,
+                communication, and practical problem solving.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section id="projects">
+    <h2 class="section-title">My Projects</h2>
+
+    <div class="grid">
+
+        <div class="project-card">
+            <h3>My First Website</h3>
+
+            <p>
+                My first website created using HTML and CSS
+                and published online through GitHub Pages.
+            </p>
+        </div>
+
+        <div class="project-card">
+            <h3>Future AI Project</h3>
+
+            <p>
+                I am exploring ideas for building useful applications
+                using artificial intelligence.
+            </p>
+        </div>
+
+        <div class="project-card">
+            <h3>Content Platform</h3>
+
+            <p>
+                A future platform focused on storytelling,
+                inspiration, education, and meaningful conversations.
+            </p>
+        </div>
+
     </div>
 </section>
 
 <section id="contact">
-    <div class="card">
-        <h2>Contact Me</h2>
+    <h2 class="section-title">Let's Connect</h2>
+
+    <div class="card contact">
 
         <p>
-            Thanks for visiting my website.
+            Interested in connecting, collaborating,
+            or discussing an idea?
         </p>
 
-        <a class="button" href="mailto:your-geraldmua@gmail.com">
+        <a
+            href="mailto:your-geraldmua@gmail.com"
+            class="btn btn-primary"
+        >
             Send Me an Email
         </a>
+
     </div>
 </section>
 
 <footer>
-    <p>© 2026 Gerald. My First GitHub Website.</p>
+    <p>
+        © 2026 Gerald. Built with HTML, CSS and GitHub Pages.
+    </p>
 </footer>
 
 </body>
